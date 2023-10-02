@@ -1,8 +1,8 @@
 package com.mobisi.backend.Api.Infrastructure;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import com.mobisi.backend.Api.Repositories.DAOs.UserDAO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<SecurityProperties.User, Long> {
+public interface UserRepository extends JpaRepository<UserDAO, Long> {
 
 }

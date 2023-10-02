@@ -1,14 +1,18 @@
 package com.mobisi.backend.Api.Repositories.DAOs;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.management.ConstructorParameters;
+
 @Getter
 @Setter
 @ToString
-@Table(name = "Usuario")
+@Table(name = "usuario")
+@Entity
 public class UserDAO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +36,7 @@ public class UserDAO {
     @Column(name = "cPais")
 
     private String country;
-    @Column(name = "iTpDeficiencia")
+    @Column(name = "fk_TpDeficiencia_Id")
     private int typeOfDisability;
 
     @Column(name = "bAtivo")
