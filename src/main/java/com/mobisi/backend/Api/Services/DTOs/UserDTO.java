@@ -12,6 +12,7 @@ public class UserDTO {
     private long id;
     private String name;
     private String email;
+    private String password;
     private String phone;
     private int age;
     private String cep;
@@ -19,18 +20,18 @@ public class UserDTO {
 
     private boolean status;
 
-    public UserDTO(long id, String nome, String email, String telefone, int idade, String cep, int tipoDeficiencia){
+    public UserDTO(long id, String nome, String email, String password, String telefone, int idade, String cep, int tipoDeficiencia){
         this.id = id;
         this.name = nome;
         this.email = email;
+        this.password = password;
         this.phone = telefone;
         this.age = idade;
         this.cep = cep;
         this.typeOfDisability = tipoDeficiencia;
         this.status = true;
     }
-
-
     public UserDTO() {}
+
 }
 

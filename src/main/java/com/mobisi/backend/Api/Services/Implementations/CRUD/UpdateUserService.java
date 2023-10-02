@@ -1,7 +1,7 @@
-package com.mobisi.backend.Api.Services.Implementations;
+package com.mobisi.backend.Api.Services.Implementations.CRUD;
 
 import com.mobisi.backend.Api.Repositories.DAOs.UserDAO;
-import com.mobisi.backend.Api.Repositories.Implementations.UpdateUserRepository;
+import com.mobisi.backend.Api.Repositories.Implementations.CRUD.UpdateUserRepository;
 import com.mobisi.backend.Api.Services.Converters.ConvertDTOToDAO;
 import org.springframework.stereotype.Service;
 

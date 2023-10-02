@@ -21,6 +21,8 @@ public class UserDAO {
     private String name;
     @Column(name = "cEmail")
     private String email;
+    @Column(name = "cSenha")
+    private String password;
     @Column(name = "cTelefone")
     private String phone;
     @Column(name = "iIdade")
@@ -42,9 +44,10 @@ public class UserDAO {
     @Column(name = "bAtivo")
     private boolean status;
 
-    public UserDAO(String nome, String email, String telefone, int idade, String cep, String cidade, String bairro, String estado, String pais, int tipoDeficiencia){
+    public UserDAO(String nome, String email, String password, String telefone, int idade, String cep, String cidade, String bairro, String estado, String pais, int tipoDeficiencia){
         this.name = nome;
         this.email = email;
+        this.password = password;
         this.phone = telefone;
         this.age = idade;
         this.cep = cep;

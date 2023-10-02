@@ -1,8 +1,8 @@
-package com.mobisi.backend.Api.Controllers;
+package com.mobisi.backend.Api.Controllers.CRUD;
 
 import com.mobisi.backend.Api.Controllers.ApiResponses.ApiResponse;
 import com.mobisi.backend.Api.Services.DTOs.UserDTO;
-import com.mobisi.backend.Api.Services.Implementations.CreateUserService;
+import com.mobisi.backend.Api.Services.Implementations.CRUD.CreateUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

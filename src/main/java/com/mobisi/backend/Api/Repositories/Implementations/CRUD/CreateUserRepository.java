@@ -1,4 +1,4 @@
-package com.mobisi.backend.Api.Repositories.Implementations;
+package com.mobisi.backend.Api.Repositories.Implementations.CRUD;
 
 import com.mobisi.backend.Api.Infrastructure.UserRepository;
 import com.mobisi.backend.Api.Repositories.DAOs.UserDAO;

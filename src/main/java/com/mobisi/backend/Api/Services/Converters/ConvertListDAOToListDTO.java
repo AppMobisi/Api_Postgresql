@@ -6,7 +6,7 @@ import com.mobisi.backend.Api.Services.DTOs.UserDTO;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConvertDAOToDTO {
+public class ConvertListDAOToListDTO {
     public static List<UserDTO> Convert (List<UserDAO> listUserInFormatDAO){
         List<UserDTO> listUserInFormatDTO = new ArrayList<UserDTO>();
 
@@ -15,6 +15,7 @@ public class ConvertDAOToDTO {
                     user.getId(),
                     user.getName(),
                     user.getEmail(),
+                    user.getPassword(),
                     user.getPhone(),
                     user.getAge(),
                     user.getCep(),

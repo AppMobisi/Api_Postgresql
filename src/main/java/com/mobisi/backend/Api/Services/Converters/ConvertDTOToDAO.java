@@ -12,6 +12,7 @@ public class ConvertDTOToDAO    {
        return  new UserDAO(
                 user.getName(),
                 user.getEmail(),
+                user.getPassword(),
                 user.getPhone(),
                 user.getAge(),
                 user.getCep(),
