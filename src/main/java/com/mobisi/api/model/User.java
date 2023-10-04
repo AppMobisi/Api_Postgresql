@@ -15,41 +15,39 @@ import lombok.Setter;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "iid")
     private Long id;
 
-    @Column(name = "cNome")
+    @Column(name = "cnome")
     private String name;
 
-    @Column(name = "cEmail")
+    @Column(name = "cemail")
     private String email;
 
-    @Column(name = "cSenha")
+    @Column(name = "csenha")
     private String password;
 
-    @Column(name = "cTelefone")
+    @Column(name = "ctelefone")
     private String phone;
 
-    @Column(name = "iIdade")
+    @Column(name = "iidade")
     private int age;
 
-    @Column(name = "cCep")
-    private String cep;
+    @Column(name = "icep")
+    private int cep;
 
-    @Column(name = "cCidade")
+    @Column(name = "ccidade")
     private String city;
 
-    @Column(name = "cBairro")
+    @Column(name = "cbairro")
     private String neighborhood;
 
-    @Column(name = "cEstado")
+    @Column(name = "cestado")
     private String state;
 
-    @Column(name = "cPais")
-    private String country;
-
-    @Column(name = "fk_TpDeficiencia_Id")
+    @Column(name = "fk_tpDeficiencia_id")
     private int typeOfDisability;
 
-    @Column(name = "bAtivo")
+    @Column(name = "bativo")
     private boolean status;
 }

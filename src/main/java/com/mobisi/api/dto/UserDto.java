@@ -20,7 +20,7 @@ public class UserDto {
 
     private int age;
 
-    private String cep;
+    private int cep;
 
     private int typeOfDisability;
 }
