@@ -21,6 +21,9 @@ public class User {
     @Column(name = "cnome")
     private String name;
 
+    @Column(name = "ccpf")
+    private String cpf;
+
     @Column(name = "cemail")
     private String email;
 
@@ -45,7 +48,7 @@ public class User {
     @Column(name = "cestado")
     private String state;
 
-    @Column(name = "fk_tpDeficiencia_id")
+    @Column(name = "itipodeficienciaid")
     private int typeOfDisability;
 
     @Column(name = "bativo")

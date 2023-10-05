@@ -23,6 +23,10 @@ public class CreateUserDto {
     @NotNull(message = "Invalid password: password is NULL")
     private String password;
 
+    @NotBlank(message = "Invalid CPF: Empty CPF")
+    @NotNull(message = "Invalid CPF: CPF is NULL")
+    private String cpf;
+
     @NotBlank(message = "Invalid phone: Empty phone")
     @NotNull(message = "Invalid phone: phone is NULL")
     private String phone;
