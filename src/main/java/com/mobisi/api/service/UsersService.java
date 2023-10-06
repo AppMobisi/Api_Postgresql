@@ -1,13 +1,11 @@
 package com.mobisi.api.service;
 
-import com.mobisi.api.dto.CreateUserDto;
 import com.mobisi.api.dto.UserDto;
 import com.mobisi.api.exceptions.BaseHttpException;
-import com.mobisi.api.exceptions.HttpExceptionHandler;
+import com.mobisi.api.exceptions.ExceptionHandler;
 import com.mobisi.api.model.User;
 import com.mobisi.api.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
@@ -36,7 +34,7 @@ public class UsersService {
                     .collect(Collectors.toList());
         }
         catch(Exception exc) {
-            throw HttpExceptionHandler.handleException(exc);
+            throw ExceptionHandler.handleHttpException(exc);
         }
     }
 
@@ -53,7 +51,7 @@ public class UsersService {
             return modelMapper.map(user, UserDto.class);
         }
         catch (Exception exc) {
-            throw HttpExceptionHandler.handleException(exc);
+            throw ExceptionHandler.handleHttpException(exc);
         }
     }
 
@@ -68,7 +66,7 @@ public class UsersService {
             }
         }
         catch (Exception exc) {
-            throw HttpExceptionHandler.handleException(exc);
+            throw ExceptionHandler.handleHttpException(exc);
         }
     }
 
@@ -83,7 +81,7 @@ public class UsersService {
             User user = data.get();
             this.usersRepository.delete(user);
         } catch (Exception exc) {
-            throw HttpExceptionHandler.handleException(exc);
+            throw ExceptionHandler.handleHttpException(exc);
         }
     }
 }
