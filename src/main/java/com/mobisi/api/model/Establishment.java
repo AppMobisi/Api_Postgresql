@@ -14,7 +14,7 @@ import lombok.Setter;
 @Entity
 public class Establishment {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "cNome")
@@ -35,6 +35,6 @@ public class Establishment {
     @Column(name = "cEstado")
     private String state;
 
-    @Column(name = "cPais")
-    private String country;
+    @Column(name = "iTpEstabelecimento")
+    private int typeOfEstablishment;
 }
