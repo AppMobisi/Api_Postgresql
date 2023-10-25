@@ -1,5 +1,6 @@
 package com.mobisi.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -48,8 +49,9 @@ public class User {
     @Column(name = "cestado")
     private String state;
 
-    @Column(name = "itipodeficienciaid")
-    private int typeOfDisability;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "itipodeficienciaid")
+    private DisabilityType disabilityType;
 
     @Column(name = "bativo")
     private boolean status;

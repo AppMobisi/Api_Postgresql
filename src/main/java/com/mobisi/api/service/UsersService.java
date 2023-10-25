@@ -40,6 +40,7 @@ public class UsersService {
         }
     }
 
+
     public UserDto getUserById(Long id) throws BaseHttpException {
         try {
             Optional<User> data = this.usersRepository.findById(id);

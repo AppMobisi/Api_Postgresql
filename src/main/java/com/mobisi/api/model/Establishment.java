@@ -16,7 +16,7 @@ public class Establishment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
     @Column(name = "cNome")
     private String name;
 
