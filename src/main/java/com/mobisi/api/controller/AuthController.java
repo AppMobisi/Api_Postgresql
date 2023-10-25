@@ -1,8 +1,10 @@
 package com.mobisi.api.controller;
 
 import com.mobisi.api.dto.CreateUserDto;
+import com.mobisi.api.dto.SignInDto;
 import com.mobisi.api.dto.UserDto;
 import com.mobisi.api.exceptions.BaseHttpException;
+import com.mobisi.api.model.User;
 import com.mobisi.api.responses.ApiResponse;
 import com.mobisi.api.responses.DefaultResponse;
 import com.mobisi.api.responses.ErrorResponse;
@@ -36,6 +38,23 @@ public class AuthController {
     ) {
         try {
             UserDto user = this.authService.signUp(data);
+
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(new DefaultResponse<>(201, user));
+        } catch (BaseHttpException exc) {
+            return ResponseEntity.status(exc.getStatusCode())
+                    .body(new ErrorResponse(exc.getStatusCode(), exc.getMessage()));
+        }
+    }
+
+    @PostMapping("/signin")
+    public ResponseEntity<ApiResponse> signIn(
+            @RequestBody
+            @Valid
+            SignInDto data
+    ) {
+        try {
+            UserDto user = this.authService.signIn(data);
 
             return ResponseEntity.status(HttpStatus.OK)
                     .body(new DefaultResponse<>(200, user));

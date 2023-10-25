@@ -1,17 +1,14 @@
 package com.mobisi.api.service;
 
-import com.mobisi.api.dto.CreateUserDto;
 import com.mobisi.api.dto.UserDto;
 import com.mobisi.api.exceptions.BaseHttpException;
-import com.mobisi.api.exceptions.HttpExceptionHandler;
+import com.mobisi.api.exceptions.ExceptionHandler;
 import com.mobisi.api.model.User;
 import com.mobisi.api.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +17,7 @@ import java.util.stream.Collectors;
 @Service
 public class UsersService {
     private final UsersRepository usersRepository;
+
     private final ModelMapper modelMapper = new ModelMapper();
 
     @Autowired
@@ -30,13 +28,14 @@ public class UsersService {
     public List<UserDto> getAllUsers() throws BaseHttpException {
         try {
             List<User> users = this.usersRepository.findAll();
+
             return users
                     .stream()
                     .map(user -> modelMapper.map(user, UserDto.class))
                     .collect(Collectors.toList());
         }
         catch(Exception exc) {
-            throw HttpExceptionHandler.handleException(exc);
+            throw ExceptionHandler.handleHttpException(exc);
         }
     }
 
@@ -54,7 +53,7 @@ public class UsersService {
             return modelMapper.map(user, UserDto.class);
         }
         catch (Exception exc) {
-            throw HttpExceptionHandler.handleException(exc);
+            throw ExceptionHandler.handleHttpException(exc);
         }
     }
 
@@ -69,11 +68,12 @@ public class UsersService {
             }
         }
         catch (Exception exc) {
-            throw HttpExceptionHandler.handleException(exc);
+            throw ExceptionHandler.handleHttpException(exc);
         }
     }
 
     public void deleteUser(Long id) throws BaseHttpException {
+
         try {
             Optional<User> data = this.usersRepository.findById(id);
 
@@ -82,9 +82,11 @@ public class UsersService {
             }
 
             User user = data.get();
+
             this.usersRepository.delete(user);
+
         } catch (Exception exc) {
-            throw HttpExceptionHandler.handleException(exc);
+            throw ExceptionHandler.handleHttpException(exc);
         }
     }
 }
