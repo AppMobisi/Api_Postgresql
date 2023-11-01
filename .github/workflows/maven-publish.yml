@@ -28,4 +28,4 @@ jobs:
       with:
         service-id: ${{secrets.SERVICE_ID_DEV}}
         api-key: ${{secrets.RENDER_APY_KEY}}
-        distribution: 'service-id'  # Você pode especificar sua estratégia de distribuição desejada aqui
+        distribution: 'auto'  # Você pode especificar sua estratégia de distribuição desejada aqui
