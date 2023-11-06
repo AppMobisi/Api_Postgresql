@@ -36,10 +36,10 @@ public class AuthService {
             }
 
             String hashedPassword = BCrypt.hashpw(data.getPassword(), BCrypt.gensalt());
-
+            System.out.println(data.getDisabilityType());
             User user = modelMapper.map(data, User.class);
             user.setPassword(hashedPassword);
-
+            System.out.println(user.getDisabilityType());
             User savedUser = this.usersRepository.save(user);
 
             return modelMapper.map(savedUser, UserDto.class);
@@ -55,7 +55,11 @@ public class AuthService {
                 throw new BaseHttpException(HttpStatus.NOT_FOUND.value(), "User with that email was not found");
             }
 
-            return modelMapper.map(user, UserDto.class);
+            if (BCrypt.checkpw(data.getPassword(), user.getPassword())) {
+                return modelMapper.map(user, UserDto.class);
+            } else {
+                throw new BaseHttpException(HttpStatus.UNAUTHORIZED.value(), "Incorrect password");
+            }
         } catch (Exception exc) {
             throw ExceptionHandler.handleHttpException(exc);
         }

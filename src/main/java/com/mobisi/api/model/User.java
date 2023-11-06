@@ -1,5 +1,6 @@
 package com.mobisi.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,11 +34,8 @@ public class User {
     @Column(name = "ctelefone")
     private String phone;
 
-    @Column(name = "iidade")
-    private int age;
-
-    @Column(name = "icep")
-    private int cep;
+    @Column(name = "ccep")
+    private String cep;
 
     @Column(name = "ccidade")
     private String city;
@@ -49,8 +47,8 @@ public class User {
     private String state;
 
     @Column(name = "itipodeficienciaid")
-    private int typeOfDisability;
+    private int disabilityType;
 
-    @Column(name = "bativo")
-    private boolean status;
+    @Column(name = "iativo")
+    private int status = 1;
 }

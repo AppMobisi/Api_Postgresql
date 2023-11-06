@@ -35,9 +35,9 @@ public class CreateUserDto {
     @PositiveOrZero(message = "Invalid age: age must be a positive or zero value")
     private Integer age;
 
+    @NotBlank(message = "Invalid cep: Empty cep")
     @NotNull(message = "Invalid age: age is NULL")
-    @Positive(message = "Invalid age: age must be a positive")
-    private int cep;
+    private String cep;
 
     @NotBlank(message = "Invalid city: Empty city")
     private String city;
@@ -48,9 +48,6 @@ public class CreateUserDto {
     @NotBlank(message = "Invalid state: Empty state")
     private String state;
 
-    @NotBlank(message = "Invalid country: Empty country")
-    private String country;
-
-    @NotNull(message = "Invalid typeOfDisability: typeOfDisability is NULL")
-    private Integer typeOfDisability;
+    @NotNull(message = "Invalid disabilityType: disabilityType is NULL")
+    private Integer disabilityType;
 }

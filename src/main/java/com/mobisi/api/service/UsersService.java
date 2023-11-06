@@ -27,7 +27,9 @@ public class UsersService {
 
     public List<UserDto> getAllUsers() throws BaseHttpException {
         try {
+            System.out.println("0");
             List<User> users = this.usersRepository.findAll();
+            System.out.println("1");
 
             return users
                     .stream()
@@ -35,9 +37,11 @@ public class UsersService {
                     .collect(Collectors.toList());
         }
         catch(Exception exc) {
+            System.out.println(exc);
             throw ExceptionHandler.handleHttpException(exc);
         }
     }
+
 
     public UserDto getUserById(Long id) throws BaseHttpException {
         try {
