@@ -25,7 +25,7 @@ public class UsersService {
         this.usersRepository = usersRepository;
     }
 
-    public List<UserDto> getAllUsers() throws BaseHttpException {
+    public List<UserDto> GetAllUsers() throws BaseHttpException {
         try {
             System.out.println("0");
             List<User> users = this.usersRepository.findAll();
@@ -43,7 +43,7 @@ public class UsersService {
     }
 
 
-    public UserDto getUserById(Long id) throws BaseHttpException {
+    public UserDto GetById(Long id) throws BaseHttpException {
         try {
             Optional<User> data = this.usersRepository.findById(id);
 
@@ -60,7 +60,7 @@ public class UsersService {
         }
     }
 
-    public List<UserDto> getUserByEmail(String email) throws BaseHttpException {
+    public List<UserDto> GetByEmail(String email) throws BaseHttpException {
         try {
             User user = this.usersRepository.findByEmail(email);
 
@@ -75,7 +75,7 @@ public class UsersService {
         }
     }
 
-    public void deleteUser(Long id) throws BaseHttpException {
+    public void DeleteById(Long id) throws BaseHttpException {
 
         try {
             Optional<User> data = this.usersRepository.findById(id);

@@ -13,4 +13,15 @@ public class DisabilityType {
     @Column(name = "cnome")
     private String nome;
 
+    public String getNome() {
+        return nome;
+    }
+
+    @Override
+    public String toString() {
+        return "DisabilityType{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                '}';
+    }
 }

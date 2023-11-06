@@ -31,10 +31,6 @@ public class CreateUserDto {
     @NotNull(message = "Invalid phone: phone is NULL")
     private String phone;
 
-    @NotNull(message = "Invalid age: age is NULL")
-    @PositiveOrZero(message = "Invalid age: age must be a positive or zero value")
-    private Integer age;
-
     @NotBlank(message = "Invalid cep: Empty cep")
     @NotNull(message = "Invalid age: age is NULL")
     private String cep;

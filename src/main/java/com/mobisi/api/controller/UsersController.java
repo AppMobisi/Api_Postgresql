@@ -24,16 +24,16 @@ public class UsersController {
     }
 
     @GetMapping()
-    public ResponseEntity<ApiResponse> getAllUsers(
+    public ResponseEntity<ApiResponse> GetUser(
             @RequestParam(required = false) String email
     ) {
         try {
             List<UserDto> users;
 
             if (email != null) {
-                users = this.usersService.getUserByEmail(email);
+                users = this.usersService.GetByEmail(email);
             } else {
-                users = this.usersService.getAllUsers();
+                users = this.usersService.GetAllUsers();
             }
 
             return ResponseEntity.status(HttpStatus.OK)
@@ -46,9 +46,9 @@ public class UsersController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse> getUserById(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse> GetById(@PathVariable Long id) {
         try {
-            UserDto user = this.usersService.getUserById(id);
+            UserDto user = this.usersService.GetById(id);
             return ResponseEntity.status(HttpStatus.OK)
                     .body(new DefaultResponse<>(200, user));
         }
@@ -59,9 +59,9 @@ public class UsersController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResponse> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse> DeleteById(@PathVariable Long id) {
         try {
-            this.usersService.deleteUser(id);
+            this.usersService.DeleteById(id);
 
             return ResponseEntity.status(HttpStatus.NO_CONTENT)
                         .body(new DefaultResponse<>(200, null));

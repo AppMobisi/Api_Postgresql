@@ -22,31 +22,6 @@ public class EstablishmentController {
     public EstablishmentController(EstablishmentService establishmentService) {
         this.establishmentService = establishmentService;
     }
-
-//    @GetMapping()
-//    public ResponseEntity<ApiResponse> getAllEstablishments() {
-//        try {
-//            List<EstablishmentDto> establishments = this.establishmentService.getAllEstablishments();
-//            return ResponseEntity.status(HttpStatus.OK)
-//                    .body(new DefaultResponse<>(200, establishments));
-//        } catch (BaseHttpException exc) {
-//            return ResponseEntity.status(exc.getStatusCode())
-//                    .body(new ErrorResponse(exc.getStatusCode(), exc.getMessage()));
-//        }
-//    }
-
-//    @GetMapping("/{id}")
-//    public ResponseEntity<ApiResponse> getEstablishmentById(@PathVariable Long id) {
-//        try {
-//            EstablishmentDto establishment = this.establishmentService.getEstablishmentById(id);
-//            return ResponseEntity.status(HttpStatus.OK)
-//                    .body(new DefaultResponse<>(200, establishment));
-//        } catch (BaseHttpException exc) {
-//            return ResponseEntity.status(exc.getStatusCode())
-//                    .body(new ErrorResponse(exc.getStatusCode(), exc.getMessage()));
-//        }
-//    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse> deleteEstablishment(@PathVariable Long id) {
         try {
@@ -71,17 +46,4 @@ public class EstablishmentController {
                     .body(new ErrorResponse(exc.getStatusCode(), exc.getMessage()));
         }
     }
-
-//    @PutMapping("/{id}")
-//    public ResponseEntity<ApiResponse> updateEstablishment(@PathVariable Long id, @RequestBody EstablishmentDto establishmentDto) {
-//        try {
-//            EstablishmentDto updatedEstablishment = this.establishmentService.updateEstablishment(id, establishmentDto);
-//            return ResponseEntity.status(HttpStatus.OK)
-//                    .body(new DefaultResponse<>(200, updatedEstablishment));
-//        } catch (BaseHttpException exc) {
-//            return ResponseEntity.status(exc.getStatusCode())
-//                    .body(new ErrorResponse(exc.getStatusCode(), exc.getMessage()));
-//        }
-//    }
-
 }
