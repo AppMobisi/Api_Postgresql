@@ -32,35 +32,6 @@
         public EstablishmentService(EstablishmentsRepository establishmentsRepository) {
             this.establishmentsRepository = establishmentsRepository;
         }
-    //    public List<EstablishmentDto> getAllEstablishments() throws BaseHttpException{
-    //        try{
-    //            List<Establishment> establishments = this.establishmentsRepository.findAll();
-    //            return establishments
-    //                    .stream()
-    //                    .map(establishment -> modelMapper.map(establishment, EstablishmentDto.class))
-    //                    .collect(Collectors.toList());
-    //        }
-    //        catch (Exception exc){
-    //            throw ExceptionHandler.handleHttpException(exc);
-    //        }
-    //    }
-
-    //    public EstablishmentDto getEstablishmentById(Long id) throws BaseHttpException {
-    //        try {
-    //            Optional<Establishment> data = this.establishmentsRepository.findById(id);
-    //
-    //            if (data.isEmpty()) {
-    //                throw new BaseHttpException(HttpStatus.NOT_FOUND.value(), String.format("Establishment with id %s was not found", id));
-    //            }
-    //
-    //            Establishment establishment = data.get();
-    //
-    //            return modelMapper.map(establishment, EstablishmentDto.class);
-    //        }
-    //        catch (Exception exc) {
-    //            throw ExceptionHandler.handleHttpException(exc);
-    //        }
-    //    }
 
         public void deleteEstablishment(Long id) throws BaseHttpException {
             try {
@@ -83,7 +54,7 @@
                         "key=AIzaSyBzAGAGzBzvVwTKsKwAtI76Hjfp-lZQ3uo" +
                         "&location=" + longitude + "," + latitude +
                         "&radius=" + radius +
-                        "&fields=address,international_phone_number,website,price_range,opening_hours,popularity,review,photo,name"
+                        "&fields=address,price_level,opening_hours,popularity,review,photo,name"
                 );
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
@@ -104,45 +75,20 @@
                 JsonNode resultGoogle = responseGoogle.get("results");
 
                 System.out.println(resultGoogle);
-
-                List<EstablishmentDto> establishments = new ArrayList<>();
-                for (JsonNode establishmentNode : resultGoogle) {
-                    System.out.println(establishmentNode);
-                    EstablishmentDto establishment = mapper.treeToValue(establishmentNode, EstablishmentDto.class);
-                    System.out.println("\n");
+                List<EstablishmentDto> establishmentList = new ArrayList<>();
+                for (JsonNode establishment : resultGoogle) {
                     System.out.println(establishment);
-                    System.out.println("\n");
+                    EstablishmentDto establishmentDto = mapper.treeToValue(establishment, EstablishmentDto.class);
+                    System.out.println(establishmentDto);
+                    establishmentList.add(establishmentDto);
                 }
 
-                System.out.println(establishments);
-
-                return establishments;
-
+                return establishmentList;
             } catch (IOException | RuntimeException exc) {
                 exc.printStackTrace();
                 throw new BaseHttpException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Failed to retrieve establishments.");
             }
         }
-
-
-    //        try {
-    //            Optional<Establishment> data = establishmentsRepository.findById(id);
-    //
-    //            if (data.isEmpty()) {
-    //                throw new BaseHttpException(HttpStatus.NOT_FOUND.value(), String.format("Establishment with id %s was not found", id));
-    //            }
-    //
-    //            Establishment existingEstablishment = data.get();
-    //
-    //            Establishment updatedEstablishment = establishmentsRepository.save(existingEstablishment);
-    //
-    //            return modelMapper.map(updatedEstablishment, EstablishmentDto.class);
-    //        } catch (Exception exc) {
-    //            throw ExceptionHandler.handleHttpException(exc);
-    //        }
-    //    }
-
-
     }
 
 

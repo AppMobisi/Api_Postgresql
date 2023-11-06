@@ -5,6 +5,7 @@ import com.mobisi.api.dto.SignInDto;
 import com.mobisi.api.dto.UserDto;
 import com.mobisi.api.exceptions.BaseHttpException;
 import com.mobisi.api.exceptions.ExceptionHandler;
+import com.mobisi.api.model.DisabilityType;
 import com.mobisi.api.model.User;
 import com.mobisi.api.repository.UsersRepository;
 import com.mobisi.api.utils.JwtUtil;
@@ -51,6 +52,9 @@ public class AuthService {
     public UserDto signIn(SignInDto data) throws BaseHttpException {
         try {
             User user = usersRepository.findByEmail(data.getEmail());
+            String disability = user.getDisability().getNome();
+
+            user.setDisabilityType(disability);
             if (user == null) {
                 throw new BaseHttpException(HttpStatus.NOT_FOUND.value(), "User with that email was not found");
             }

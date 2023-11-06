@@ -18,9 +18,7 @@ public class EstablishmentDto {
         return "EstablishmentDto{" +
                 "name='" + name + '\'' +
                 ", rating=" + rating +
-                ", internationalPhoneNumber='" + internationalPhoneNumber + '\'' +
-                ", website='" + website + '\'' +
-                ", priceRange='" + priceRange + '\'' +
+                ", priceLevel='" + priceLevel + '\'' +
                 ", openingHours=" + openingHours +
                 ", popularity=" + popularity +
                 ", photos=" + photos +
@@ -33,16 +31,10 @@ public class EstablishmentDto {
     @JsonProperty(value = "rating", required = false)
     private double rating;
 
-    @JsonProperty(value = "international_phone_number", required = false)
-    private String internationalPhoneNumber;
+    @JsonProperty(value = "price_level", required = false)
+    private String priceLevel;
 
-    @JsonProperty(value = "website", required = false)
-    private String website;
-
-    @JsonProperty(value = "priceRange", required = false)
-    private String priceRange;
-
-    @JsonProperty(value = "openingHours", required = false)
+    @JsonProperty(value = "opening_hours", required = false)
     private Object openingHours;
 
     @JsonProperty(value = "popularity", required = false)

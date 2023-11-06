@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class ExceptionHandler {
     public static BaseHttpException handleHttpException(Exception exc) {
+        System.out.println(exc);
         if (exc instanceof BaseHttpException) {
             return (BaseHttpException) exc;
         } else {
