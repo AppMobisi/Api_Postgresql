@@ -17,6 +17,6 @@ public class UserDto {
     private String email;
     private String phone;
     private int age;
-    private int cep;
-    private DisabilityType disabilityType;
+    private String cep;
+    private int disabilityType;
 }

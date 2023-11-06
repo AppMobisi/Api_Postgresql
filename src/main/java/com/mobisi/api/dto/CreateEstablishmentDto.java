@@ -21,8 +21,8 @@ public class CreateEstablishmentDto {
     private double score;
 
     @NotNull(message = "Invalid cep: cep is NULL")
-    @PositiveOrZero(message = "Invalid cep: age must be a positive or zero value")
-    private int cep;
+    @NotBlank(message = "Invalid cep: Empty cep")
+    private String cep;
 
     @NotNull(message = "Invalid typeOfEstablishment: typeOfEstablishment is NULL")
     private int typeOfEstablishment;

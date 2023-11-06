@@ -34,11 +34,8 @@ public class User {
     @Column(name = "ctelefone")
     private String phone;
 
-    @Column(name = "iidade")
-    private int age;
-
-    @Column(name = "icep")
-    private int cep;
+    @Column(name = "ccep")
+    private String cep;
 
     @Column(name = "ccidade")
     private String city;
@@ -49,10 +46,9 @@ public class User {
     @Column(name = "cestado")
     private String state;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "itipodeficienciaid")
-    private DisabilityType disabilityType;
+    @Column(name = "itipodeficienciaid")
+    private int disabilityType;
 
-    @Column(name = "bativo")
-    private boolean status;
+    @Column(name = "iativo")
+    private int status = 1;
 }

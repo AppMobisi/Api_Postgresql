@@ -1,5 +1,6 @@
 package com.mobisi.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,13 +11,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Estabelicimento")
+@Table(name = "Estabelecimento")
 @Entity
 public class Establishment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(name = "cNome")
     private String name;
 
@@ -24,7 +25,7 @@ public class Establishment {
     private double score;
 
     @Column(name = "cCep")
-    private int cep;
+    private String cep;
 
     @Column(name = "cRua")
     private String neighborhood;
@@ -35,6 +36,8 @@ public class Establishment {
     @Column(name = "cEstado")
     private String state;
 
+
     @Column(name = "iTpEstabelecimento")
     private int typeOfEstablishment;
+
 }
