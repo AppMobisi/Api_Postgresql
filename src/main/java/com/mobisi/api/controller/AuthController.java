@@ -38,6 +38,7 @@ public class AuthController {
     ) {
         try {
             UserDto user = this.authService.signUp(data);
+
             return ResponseEntity.status(HttpStatus.OK)
                     .body(new DefaultResponse<>(201, user));
         } catch (BaseHttpException exc) {

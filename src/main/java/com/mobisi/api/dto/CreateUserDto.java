@@ -45,5 +45,5 @@ public class CreateUserDto {
     private String state;
 
     @NotNull(message = "Invalid disabilityType: disabilityType is NULL")
-    private Long disabilityType;
+    private Integer disabilityType;
 }

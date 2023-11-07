@@ -1,11 +1,7 @@
 package com.mobisi.api.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "tp_deficiencia")
 public class DisabilityType {
@@ -16,6 +12,11 @@ public class DisabilityType {
 
     @Column(name = "cnome")
     private String nome;
+
+    public String getNome() {
+        return nome;
+    }
+
     @Override
     public String toString() {
         return "DisabilityType{" +
