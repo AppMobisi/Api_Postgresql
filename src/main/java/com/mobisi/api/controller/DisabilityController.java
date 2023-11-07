@@ -1,6 +1,7 @@
 package com.mobisi.api.controller;
 
 import com.mobisi.api.exceptions.BaseHttpException;
+import com.mobisi.api.model.DisabilityType;
 import com.mobisi.api.responses.ApiResponse;
 import com.mobisi.api.responses.DefaultResponse;
 import com.mobisi.api.responses.ErrorResponse;
@@ -22,10 +23,10 @@ public class DisabilityController {
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse> getDisabilityById(@PathVariable Long id) {
         try {
-            this.disabilityService.getDisabilityById(id);
+            DisabilityType disability = this.disabilityService.getDisabilityById(id);
 
-            return ResponseEntity.status(HttpStatus.NO_CONTENT)
-                    .body(new DefaultResponse<>(204, null));
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(new DefaultResponse<>(200, disability));
         } catch (BaseHttpException exc) {
             return ResponseEntity.status(exc.getStatusCode())
                     .body(new ErrorResponse(exc.getStatusCode(), exc.getMessage()));
