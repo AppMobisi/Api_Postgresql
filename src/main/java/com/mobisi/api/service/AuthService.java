@@ -7,7 +7,6 @@ import com.mobisi.api.exceptions.BaseHttpException;
 import com.mobisi.api.exceptions.ExceptionHandler;
 import com.mobisi.api.model.DisabilityType;
 import com.mobisi.api.model.User;
-import com.mobisi.api.repository.DisabilityTypeRepository;
 import com.mobisi.api.repository.UsersRepository;
 import com.mobisi.api.utils.JwtUtil;
 import org.modelmapper.ModelMapper;
@@ -17,21 +16,17 @@ import org.springframework.stereotype.Service;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.Date;
-import java.util.Optional;
 
 @Service
 public class AuthService {
     private final UsersRepository usersRepository;
-    private final DisabilityTypeRepository disabilityTypeRepository;
     private final ModelMapper modelMapper = new ModelMapper();
 
     @Autowired
     public AuthService(
-            UsersRepository usersRepository,
-            DisabilityTypeRepository disabilityTypeRepository
+            UsersRepository usersRepository
     ) {
         this.usersRepository = usersRepository;
-        this.disabilityTypeRepository = disabilityTypeRepository;
     }
 
     public UserDto signUp(CreateUserDto data) throws BaseHttpException {
@@ -45,8 +40,6 @@ public class AuthService {
 
             String hashedPassword = BCrypt.hashpw(data.getPassword(), BCrypt.gensalt());
             User user = modelMapper.map(data, User.class);
-            Optional<DisabilityType> disabilityType = disabilityTypeRepository.findById(data.getDisabilityType());
-            user.setDisability(disabilityType.get());
             user.setPassword(hashedPassword);
             user.setCreateAt(new Date());
             User savedUser = this.usersRepository.save(user);
@@ -60,7 +53,7 @@ public class AuthService {
     public UserDto signIn(SignInDto data) throws BaseHttpException {
         try {
             User user = usersRepository.findByEmail(data.getEmail());
-            Integer disability = Math.toIntExact(user.getDisability().getId());
+            String disability = user.getDisability().getNome();
 
             user.setDisabilityType(disability);
             if (user == null) {

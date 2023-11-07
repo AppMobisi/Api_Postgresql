@@ -58,29 +58,8 @@ public class User {
     private DisabilityType disability;
 
     @Transient
-    private Integer disabilityType;
+    private String disabilityType;
 
     @Column(name = "iativo")
     private int status = 1;
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", createAt=" + createAt +
-                ", updateAt=" + updateAt +
-                ", name='" + name + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", cep='" + cep + '\'' +
-                ", city='" + city + '\'' +
-                ", neighborhood='" + neighborhood + '\'' +
-                ", state='" + state + '\'' +
-                ", disability=" + disability +
-                ", disabilityType='" + disabilityType + '\'' +
-                ", status=" + status +
-                '}';
-    }
 }
