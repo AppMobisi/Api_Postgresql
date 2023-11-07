@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.util.Date;
+
 @Service
 public class AuthService {
     private final UsersRepository usersRepository;
@@ -37,10 +39,9 @@ public class AuthService {
             }
 
             String hashedPassword = BCrypt.hashpw(data.getPassword(), BCrypt.gensalt());
-            System.out.println(data.getDisabilityType());
             User user = modelMapper.map(data, User.class);
             user.setPassword(hashedPassword);
-            System.out.println(user.getDisabilityType());
+            user.setCreateAt(new Date());
             User savedUser = this.usersRepository.save(user);
 
             return modelMapper.map(savedUser, UserDto.class);

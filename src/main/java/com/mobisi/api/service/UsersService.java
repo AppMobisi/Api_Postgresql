@@ -1,5 +1,6 @@
 package com.mobisi.api.service;
 
+import com.mobisi.api.dto.AlterUserDto;
 import com.mobisi.api.dto.UserDto;
 import com.mobisi.api.exceptions.BaseHttpException;
 import com.mobisi.api.exceptions.ExceptionHandler;
@@ -9,7 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -85,8 +90,33 @@ public class UsersService {
             }
 
             User user = data.get();
+            user.setStatus(0);
+            usersRepository.save(user);
 
-            this.usersRepository.delete(user);
+        } catch (Exception exc) {
+            throw ExceptionHandler.handleHttpException(exc);
+        }
+    }
+
+    public void UpdateById(Long id, AlterUserDto alterUser) throws BaseHttpException {
+        try {
+            Optional<User> data = this.usersRepository.findById(id);
+
+            if (data.isEmpty()) {
+                throw new BaseHttpException(HttpStatus.NOT_FOUND.value(), String.format("User with id %s was not found", id));
+            }
+
+
+            User user = data.get();
+            user.setName(alterUser.getName());
+            user.setPhone(alterUser.getPhone());
+            user.setCep(alterUser.getCep());
+            user.setNeighborhood(alterUser.getNeighborhood());
+            user.setState(alterUser.getState());
+            user.setCity(alterUser.getCity());
+            user.setUpdateAt(new Date());
+
+            usersRepository.save(user);
 
         } catch (Exception exc) {
             throw ExceptionHandler.handleHttpException(exc);

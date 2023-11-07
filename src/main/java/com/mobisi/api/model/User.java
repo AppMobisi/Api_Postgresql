@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,6 +19,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "iid")
     private Long id;
+
+    @Column(name = "dcriacao")
+    private Date createAt;
+
+    @Column(name = "datualizacao")
+    private Date updateAt;
 
     @Column(name = "cnome")
     private String name;
