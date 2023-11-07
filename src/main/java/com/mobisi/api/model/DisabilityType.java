@@ -1,8 +1,10 @@
 package com.mobisi.api.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
+@Getter
 @Table(name = "tp_deficiencia")
 public class DisabilityType {
     @Id
