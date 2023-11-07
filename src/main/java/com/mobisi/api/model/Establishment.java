@@ -36,7 +36,6 @@ public class Establishment {
     @Column(name = "cEstado")
     private String state;
 
-
     @Column(name = "iTpEstabelecimento")
     private int typeOfEstablishment;
 

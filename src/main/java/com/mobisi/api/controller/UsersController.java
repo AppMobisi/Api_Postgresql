@@ -1,5 +1,6 @@
 package com.mobisi.api.controller;
 
+import com.mobisi.api.dto.AlterUserDto;
 import  com.mobisi.api.dto.UserDto;
 import com.mobisi.api.exceptions.BaseHttpException;
 import com.mobisi.api.responses.ApiResponse;
@@ -65,6 +66,20 @@ public class UsersController {
 
             return ResponseEntity.status(HttpStatus.NO_CONTENT)
                         .body(new DefaultResponse<>(200, null));
+        }
+        catch (BaseHttpException exc) {
+            return ResponseEntity.status(exc.getStatusCode())
+                    .body(new ErrorResponse(exc.getStatusCode(), exc.getMessage()));
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ApiResponse> UpdateById(@PathVariable Long id, @RequestBody AlterUserDto alterUser) {
+        try {
+            this.usersService.UpdateById(id, alterUser);
+
+            return ResponseEntity.status(HttpStatus.NO_CONTENT)
+                    .body(new DefaultResponse<>(200, null));
         }
         catch (BaseHttpException exc) {
             return ResponseEntity.status(exc.getStatusCode())
