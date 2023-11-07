@@ -21,9 +21,9 @@ public class DisabilityController {
         this.disabilityService = disabilityService;
     }
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse> getDisabilityById(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse> GetById(@PathVariable Long id) {
         try {
-            DisabilityType disability = this.disabilityService.getDisabilityById(id);
+            DisabilityType disability = this.disabilityService.GetById(id);
 
             return ResponseEntity.status(HttpStatus.OK)
                     .body(new DefaultResponse<>(200, disability));

@@ -23,7 +23,7 @@ public class DisabilityService {
         this.disabilityTypeRepository = disabilityTypeRepository;
     }
 
-    public DisabilityType getDisabilityById(Long id) throws BaseHttpException {
+    public DisabilityType GetById(Long id) throws BaseHttpException {
         try {
             Optional<DisabilityType> data = this.disabilityTypeRepository.findById(id);
 
