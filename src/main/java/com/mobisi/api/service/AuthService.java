@@ -59,14 +59,18 @@ public class AuthService {
     public UserDto signIn(SignInDto data) throws BaseHttpException {
         try {
             User user = usersRepository.findByEmail(data.getEmail());
-            String disability = user.getDisability().getNome();
 
-            user.setDisabilityType(disability);
             if (user == null) {
                 throw new BaseHttpException(HttpStatus.NOT_FOUND.value(), "User with that email was not found");
             }
+            String disability = user.getDisability().getNome();
+            user.setDisabilityType(disability);
 
             if (BCrypt.checkpw(data.getPassword(), user.getPassword())) {
+                System.out.println(user);
+                System.out.println(user.getDisabilityType());
+                System.out.println(user.getDisability());
+                user.setDisabilityType(String.valueOf(user.getDisability().getId()));
                 return modelMapper.map(user, UserDto.class);
             } else {
                 throw new BaseHttpException(HttpStatus.UNAUTHORIZED.value(), "Incorrect password");
