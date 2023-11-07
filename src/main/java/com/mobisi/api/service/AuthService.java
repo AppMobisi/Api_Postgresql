@@ -8,7 +8,6 @@ import com.mobisi.api.exceptions.ExceptionHandler;
 import com.mobisi.api.model.DisabilityType;
 import com.mobisi.api.model.User;
 import com.mobisi.api.repository.UsersRepository;
-import com.mobisi.api.utils.JwtUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
