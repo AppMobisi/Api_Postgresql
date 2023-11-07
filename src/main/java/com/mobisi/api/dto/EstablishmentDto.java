@@ -28,6 +28,9 @@ public class EstablishmentDto {
     @JsonProperty(value = "name", required = false)
     private String name;
 
+    @JsonProperty(value = "vicinity", required = false)
+    private String vicinity;
+
     @JsonProperty(value = "rating", required = false)
     private double rating;
 
