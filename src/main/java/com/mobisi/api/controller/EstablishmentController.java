@@ -46,4 +46,16 @@ public class EstablishmentController {
                     .body(new ErrorResponse(exc.getStatusCode(), exc.getMessage()));
         }
     }
+
+    @GetMapping("/photo")
+    public ResponseEntity<ApiResponse> UrlPhoto(@RequestParam String idPhoto) {
+        try {
+            String photoUrl = this.establishmentService.UrlPhoto(idPhoto);
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(new DefaultResponse<>(200, photoUrl));
+        } catch (BaseHttpException exc) {
+            return ResponseEntity.status(exc.getStatusCode())
+                    .body(new ErrorResponse(exc.getStatusCode(), exc.getMessage()));
+        }
+    }
 }

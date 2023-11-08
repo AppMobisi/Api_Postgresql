@@ -90,6 +90,18 @@
                 throw new BaseHttpException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Failed to retrieve establishments.");
             }
         }
+        public String UrlPhoto(String idPhoto) throws BaseHttpException {
+            try {
+                String url = "https://maps.googleapis.com/maps/api/place/photo?" +
+                        "photo_reference=" + idPhoto +
+                        "&key=AIzaSyBzAGAGzBzvVwTKsKwAtI76Hjfp-lZQ3uo";
+                return url;
+
+            } catch (Exception exc) {
+                throw ExceptionHandler.handleHttpException(exc);
+            }
+        }
+
     }
 
 
