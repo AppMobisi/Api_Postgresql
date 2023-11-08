@@ -15,7 +15,11 @@ public class UserDto {
     private String name;
     private String cpf;
     private String email;
+    private String password;
     private String phone;
     private String cep;
+    private String city;
+    private String neighborhood;
+    private String state;
     private Integer disabilityType;
 }

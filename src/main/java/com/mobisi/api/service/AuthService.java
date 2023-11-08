@@ -67,9 +67,6 @@ public class AuthService {
             user.setDisabilityType(disability);
 
             if (BCrypt.checkpw(data.getPassword(), user.getPassword())) {
-                System.out.println(user);
-                System.out.println(user.getDisabilityType());
-                System.out.println(user.getDisability());
                 user.setDisabilityType(String.valueOf(user.getDisability().getId()));
                 return modelMapper.map(user, UserDto.class);
             } else {
