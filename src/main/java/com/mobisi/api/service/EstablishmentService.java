@@ -67,6 +67,7 @@
                 String output;
                 StringBuilder full = new StringBuilder();
                 while ((output = br.readLine()) != null) {
+                    System.out.println(output);
                     full.append(output);
                 }
 
