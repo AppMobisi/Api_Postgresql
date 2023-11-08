@@ -92,7 +92,7 @@
         }
         public String UrlPhoto(String idPhoto) throws BaseHttpException {
             try {
-                String url = "https://maps.googleapis.com/maps/api/place/photo?" +
+                String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=450&" +
                         "photo_reference=" + idPhoto +
                         "&key=AIzaSyBzAGAGzBzvVwTKsKwAtI76Hjfp-lZQ3uo";
                 return url;
